@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bridge to Better Tech — Migration Assurance & Data Engineering</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Serif:ital@1&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#16233B;
+    --navy-2:#1D2E4A;
+    --paper:#F0EFE6;
+    --paper-2:#E7E4D6;
+    --ink:#182018;
+    --line:#4C6E96;
+    --line-soft:rgba(76,110,150,0.35);
+    --copper:#B6752D;
+    --copper-light:#D89A55;
+    --green:#4F9C82;
+    --cream-text:#EDEFE6;
+    --muted:#9FB0C8;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto;} *{animation:none !important; transition:none !important;} }
+
+  body{
+    margin:0;
+    font-family:'IBM Plex Sans', sans-serif;
+    background:var(--paper);
+    color:var(--ink);
+    line-height:1.5;
+  }
+  a{color:inherit;}
+  img,svg{max-width:100%;display:block;}
+  .mono{font-family:'IBM Plex Mono', monospace;}
+  .wrap{max-width:1120px; margin:0 auto; padding:0 28px;}
+
+  :focus-visible{outline:2px solid var(--copper); outline-offset:3px;}
+
+  /* ---------- NAV ---------- */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(22,35,59,0.96);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line-soft);
+  }
+  .nav{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:16px 28px;
+    max-width:1120px; margin:0 auto;
+  }
+  .nav .logo{
+    color:var(--cream-text); font-weight:600; font-size:1.05rem; letter-spacing:0.01em;
+    text-decoration:none;
+  }
+  .nav .logo span{color:var(--copper-light);}
+  .nav ul{
+    list-style:none; display:flex; gap:28px; margin:0; padding:0;
+  }
+  .nav a.navlink{
+    color:var(--muted); text-decoration:none; font-size:0.94rem;
+  }
+  .nav a.navlink:hover{color:var(--cream-text);}
+  .nav-toggle{display:none;}
+
+  @media (max-width:760px){
+    .nav ul{ position:absolute; top:64px; left:0; right:0; background:var(--navy);
+      flex-direction:column; gap:0; padding:8px 0; border-bottom:1px solid var(--line-soft);
+      display:none;
+    }
+    .nav ul.open{display:flex;}
+    .nav ul li{padding:12px 28px; border-top:1px solid var(--line-soft);}
+    .nav-toggle{
+      display:block; background:none; border:1px solid var(--line-soft); color:var(--cream-text);
+      font-size:0.85rem; padding:6px 10px; border-radius:3px; cursor:pointer;
+    }
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    background:var(--navy); color:var(--cream-text);
+    padding:72px 0 88px;
+    border-bottom:1px solid var(--line-soft);
+    position:relative;
+  }
+  .hero-grid{
+    display:grid; grid-template-columns:1.1fr 0.9fr; gap:48px; align-items:center;
+  }
+  @media (max-width:860px){ .hero-grid{grid-template-columns:1fr;} }
+
+  .hero-eyebrow-line{
+    display:flex; align-items:center; gap:10px; margin-bottom:22px;
+  }
+  .hero-eyebrow-line .rule{width:34px; height:1px; background:var(--copper-light);}
+  .hero-eyebrow-line span{
+    font-family:'IBM Plex Mono', monospace; font-size:0.78rem; color:var(--muted); letter-spacing:0.03em;
+  }
+
+  h1.hero-title{
+    font-size:clamp(2.1rem, 4.2vw, 3.1rem);
+    line-height:1.14;
+    font-weight:600;
+    margin:0 0 22px;
+    max-width:16ch;
+  }
+  .hero p.sub{
+    font-size:1.08rem; color:var(--muted); max-width:46ch; margin:0 0 32px;
+  }
+  .cta-row{display:flex; gap:16px; flex-wrap:wrap;}
+  .btn{
+    display:inline-block; padding:12px 22px; border-radius:2px; font-size:0.95rem; font-weight:500;
+    text-decoration:none; border:1px solid transparent; cursor:pointer;
+  }
+  .btn-primary{background:var(--copper); color:#1a1006;}
+  .btn-primary:hover{background:var(--copper-light);}
+  .btn-ghost{border:1px solid var(--line-soft); color:var(--cream-text);}
+  .btn-ghost:hover{border-color:var(--copper-light); color:var(--copper-light);}
+
+  /* schematic diagram */
+  .diagram{
+    background:rgba(255,255,255,0.02);
+    border:1px solid var(--line-soft);
+    padding:22px 18px 26px;
+  }
+  .diagram .diagram-label{
+    font-family:'IBM Plex Mono', monospace; font-size:0.72rem; color:var(--muted); margin-bottom:14px;
+    display:block;
+  }
+  .stage-row{display:flex; align-items:center;}
+  .stage{
+    text-align:center; flex:1;
+  }
+  .stage .dot{
+    width:34px; height:34px; border-radius:50%; border:1.5px solid var(--copper-light);
+    display:flex; align-items:center; justify-content:center; margin:0 auto 10px;
+    font-family:'IBM Plex Mono', monospace; font-size:0.78rem; color:var(--copper-light);
+  }
+  .stage .name{font-size:0.82rem; color:var(--cream-text);}
+  .connector{flex:0 0 24px; height:1px; background:var(--line); margin-top:-24px;}
+  @media (max-width:520px){
+    .stage-row{flex-direction:column; gap:18px;}
+    .connector{width:1px; height:24px; margin:-8px auto 0;}
+  }
+
+  /* ---------- SECTION GENERIC ---------- */
+  section{padding:76px 0;}
+  .section-head{max-width:52ch; margin-bottom:40px;}
+  .section-head .kicker{
+    font-family:'IBM Plex Mono', monospace; font-size:0.78rem; color:var(--copper); margin-bottom:10px; display:block;
+  }
+  h2{font-size:clamp(1.5rem,2.6vw,2rem); font-weight:600; margin:0 0 12px; line-height:1.25;}
+  .section-head p{color:#4a5248; font-size:1.02rem; margin:0;}
+
+  .on-navy{background:var(--navy); color:var(--cream-text);}
+  .on-navy .section-head p{color:var(--muted);}
+  .on-navy h2{color:var(--cream-text);}
+
+  /* ---------- THREE PILLARS ---------- */
+  .pillars{
+    display:grid; grid-template-columns:repeat(3,1fr); gap:1px;
+    background:var(--line-soft); border:1px solid var(--line-soft);
+  }
+  @media (max-width:820px){ .pillars{grid-template-columns:1fr;} }
+  .pillar{
+    background:var(--navy); padding:30px 26px;
+  }
+  .pillar .tag{
+    font-family:'IBM Plex Mono', monospace; font-size:0.72rem; color:var(--copper-light); margin-bottom:14px; display:block;
+  }
+  .pillar h3{font-size:1.15rem; margin:0 0 10px; color:var(--cream-text); font-weight:600;}
+  .pillar p{color:var(--muted); font-size:0.94rem; margin:0 0 18px;}
+  .pillar a{font-size:0.9rem; color:var(--copper-light); text-decoration:none; border-bottom:1px solid transparent;}
+  .pillar a:hover{border-bottom-color:var(--copper-light);}
+
+  /* ---------- FRAMEWORK STEPS ---------- */
+  .framework{
+    display:grid; grid-template-columns:repeat(4,1fr); gap:0;
+    border-top:1px solid var(--line-soft);
+  }
+  @media (max-width:820px){ .framework{grid-template-columns:1fr;} }
+  .fw-step{
+    padding:26px 22px; border-right:1px solid var(--line-soft); position:relative;
+  }
+  .framework .fw-step:last-child{border-right:none;}
+  @media (max-width:820px){ .fw-step{border-right:none; border-bottom:1px solid var(--line-soft);} }
+  .fw-step .fw-num{
+    font-family:'IBM Plex Mono', monospace; color:var(--copper-light); font-size:0.85rem; margin-bottom:12px; display:block;
+  }
+  .fw-step h4{margin:0 0 8px; font-size:1.02rem; color:var(--cream-text);}
+  .fw-step p{margin:0; color:var(--muted); font-size:0.9rem;}
+
+  /* ---------- PRODUCTS ---------- */
+  .products-table{width:100%; border-collapse:collapse; font-size:0.94rem;}
+  .products-table th{
+    text-align:left; font-family:'IBM Plex Mono', monospace; font-size:0.72rem; color:#6b7364;
+    border-bottom:1px solid #cfccbb; padding:10px 12px; font-weight:500;
+  }
+  .products-table td{
+    padding:16px 12px; border-bottom:1px solid #dcd9c8; vertical-align:top;
+  }
+  .products-table tr:last-child td{border-bottom:none;}
+  .status{
+    font-family:'IBM Plex Mono', monospace; font-size:0.72rem; padding:3px 8px; border-radius:2px;
+    display:inline-block; white-space:nowrap;
+  }
+  .status-live{background:rgba(79,156,130,0.15); color:#2d6b55;}
+  .status-pilot{background:rgba(182,117,45,0.15); color:#8a561d;}
+  .status-ready{background:rgba(76,110,150,0.15); color:#2f4a68;}
+  .prod-name{font-weight:600;}
+  @media (max-width:700px){
+    .products-table thead{display:none;}
+    .products-table td{display:block; padding:4px 12px;}
+    .products-table tr{display:block; padding:14px 0; border-bottom:1px solid #dcd9c8;}
+    .products-table td::before{content: attr(data-label); display:block; font-family:'IBM Plex Mono',monospace; font-size:0.68rem; color:#8a8878; margin-top:8px;}
+  }
+
+  /* ---------- TEAM ---------- */
+  .team{display:grid; grid-template-columns:repeat(3,1fr); gap:28px;}
+  @media (max-width:820px){ .team{grid-template-columns:1fr;} }
+  .member{border-top:2px solid var(--copper); padding-top:16px;}
+  .member h3{margin:0 0 4px; font-size:1.08rem;}
+  .member .role{font-family:'IBM Plex Mono', monospace; font-size:0.75rem; color:var(--copper); margin-bottom:12px; display:block;}
+  .member p{margin:0; font-size:0.92rem; color:#3f473b;}
+
+  /* ---------- WHITEPAPER ---------- */
+  .whitepaper{
+    display:grid; grid-template-columns:1fr 1fr; gap:40px; align-items:center;
+  }
+  @media (max-width:820px){ .whitepaper{grid-template-columns:1fr;} }
+  blockquote{
+    font-family:'IBM Plex Serif', serif; font-style:italic; font-size:1.15rem;
+    border-left:2px solid var(--copper); padding-left:20px; margin:0 0 22px; color:#2c3227;
+  }
+  .wp-form{
+    background:var(--paper-2); border:1px solid #d8d4c2; padding:26px;
+  }
+  .wp-form label{display:block; font-size:0.82rem; margin-bottom:6px; color:#3f473b;}
+  .wp-form input{
+    width:100%; padding:10px 12px; border:1px solid #cfccbb; background:#fff; margin-bottom:16px;
+    font-family:inherit; font-size:0.95rem;
+  }
+  .wp-form input:focus{outline:2px solid var(--copper); outline-offset:1px;}
+
+  /* ---------- CONTACT ---------- */
+  .contact-grid{display:grid; grid-template-columns:1fr 1fr; gap:40px;}
+  @media (max-width:820px){ .contact-grid{grid-template-columns:1fr;} }
+  .contact-item{margin-bottom:18px;}
+  .contact-item .k{font-family:'IBM Plex Mono', monospace; font-size:0.72rem; color:var(--muted); display:block; margin-bottom:4px;}
+  .contact-item .v{font-size:1rem; color:var(--cream-text);}
+  .contact-item .v a{color:var(--copper-light); text-decoration:none;}
+
+  footer{
+    background:var(--navy-2); color:var(--muted); padding:28px 0; font-size:0.82rem;
+    border-top:1px solid var(--line-soft);
+  }
+  footer .wrap{display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;}
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="nav">
+    <a href="#top" class="logo">Bridge to <span>Better</span> Tech</a>
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navMenu">Menu</button>
+    <ul id="navMenu">
+      <li><a class="navlink" href="#services">Services</a></li>
+      <li><a class="navlink" href="#products">Products</a></li>
+      <li><a class="navlink" href="#academy">Academy</a></li>
+      <li><a class="navlink" href="#about">About</a></li>
+      <li><a class="navlink" href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero" style="padding-top:56px;">
+    <div class="wrap hero-grid">
+      <div>
+        <div class="hero-eyebrow-line"><span class="rule"></span><span>DATA MIGRATION ASSURANCE</span></div>
+        <h1 class="hero-title">For businesses that can't afford to guess whether their data arrived correctly.</h1>
+        <p class="sub">Bridge to Better Tech pairs hands-on data engineering with independent, QA-grade validation — so migration confidence is demonstrated with evidence, not assumed on faith.</p>
+        <div class="cta-row">
+          <a href="#contact" class="btn btn-primary">Talk to us about a migration</a>
+          <a href="#whitepaper" class="btn btn-ghost">Read the whitepaper</a>
+        </div>
+      </div>
+      <div class="diagram">
+        <span class="diagram-label mono">FIG. 01 — THE ASSURANCE PATH</span>
+        <div class="stage-row">
+          <div class="stage"><div class="dot">01</div><div class="name">Map</div></div>
+          <div class="connector"></div>
+          <div class="stage"><div class="dot">02</div><div class="name">Cleanse</div></div>
+          <div class="connector"></div>
+          <div class="stage"><div class="dot">03</div><div class="name">Migrate</div></div>
+          <div class="connector"></div>
+          <div class="stage"><div class="dot">04</div><div class="name">Assure</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FRAMEWORK DETAIL -->
+  <section class="on-navy" style="padding-top:0; padding-bottom:0;">
+    <div class="framework">
+      <div class="fw-step">
+        <span class="fw-num mono">01 / MAP</span>
+        <h4>Structured source-to-target mapping</h4>
+        <p>Every field mapping reviewed and signed off before a single record moves.</p>
+      </div>
+      <div class="fw-step">
+        <span class="fw-num mono">02 / CLEANSE</span>
+        <h4>Pre-migration data quality scan</h4>
+        <p>Duplicates, blanks, and inconsistent formats flagged while they're still cheap to fix.</p>
+      </div>
+      <div class="fw-step">
+        <span class="fw-num mono">03 / MIGRATE</span>
+        <h4>Staged, reversible cutover</h4>
+        <p>Migration runs in stages, each with a checkpoint — never a single high-stakes leap.</p>
+      </div>
+      <div class="fw-step">
+        <span class="fw-num mono">04 / ASSURE</span>
+        <h4>Independent, record-level validation</h4>
+        <p>A distinct team reconciles source and target with a documented confidence score.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services" class="on-navy">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="kicker mono">WHAT WE DO</span>
+        <h2>Three ways we work with you</h2>
+        <p>Domain-informed engineering, not generalist tooling — built from real experience running these systems in production.</p>
+      </div>
+      <div class="pillars">
+        <div class="pillar">
+          <span class="tag mono">MIGRATION ASSURANCE</span>
+          <h3>De-risk your next migration</h3>
+          <p>For teams moving off a legacy database, IWMS, or ERP who need independent proof the data arrived correctly — not just a vendor's word for it.</p>
+          <a href="#contact">Request a scoping call</a>
+        </div>
+        <div class="pillar">
+          <span class="tag mono">MIS AUTOMATION SPRINTS</span>
+          <h3>Fix the reports nobody trusts</h3>
+          <p>Short, fixed-scope sprints that automate the manual reporting and reconciliation work eating your team's week.</p>
+          <a href="#contact">Ask about a sprint</a>
+        </div>
+        <div class="pillar">
+          <span class="tag mono">BRIDGE TO BETTER TECH ACADEMY</span>
+          <h3>Train your next data engineers</h3>
+          <p>Our live training arm teaches SQL, Python, and cloud data engineering to job-ready standard — the same skills our own team uses daily.</p>
+          <a href="#academy">See the academy</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUCTS -->
+  <section id="products">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="kicker mono">FROM THE WORKSHOP</span>
+        <h2>Applications we've built and are building</h2>
+        <p>Real client work, at real stages — trading tools, hospital ops, real estate, retail. Not everything we build is a data pipeline, and that's by design.</p>
+      </div>
+      <table class="products-table">
+        <thead>
+          <tr><th>Application</th><th>What it does</th><th>Stage</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td data-label="Application" class="prod-name">VolleyTrade</td>
+            <td data-label="What it does">Executes bulk trades on a CoinSwitch account via API.</td>
+            <td data-label="Stage"><span class="status status-pilot">Pilot — 3 months data</span></td>
+          </tr>
+          <tr>
+            <td data-label="Application" class="prod-name">TestSphere</td>
+            <td data-label="What it does">Uses LLM APIs to generate test scenarios and test cases from requirements, and tracks defects through the execution cycle.</td>
+            <td data-label="Stage"><span class="status status-ready">Ready to demo</span></td>
+          </tr>
+          <tr>
+            <td data-label="Application" class="prod-name">Hospital Management System</td>
+            <td data-label="What it does">End-to-end hospital operations system, built for and live at Sahane Ayurvedalaya.</td>
+            <td data-label="Stage"><span class="status status-live">Live client deployment</span></td>
+          </tr>
+          <tr>
+            <td data-label="Application" class="prod-name">Real Estate Pro</td>
+            <td data-label="What it does">Lists properties and tracks leases end to end.</td>
+            <td data-label="Stage"><span class="status status-ready">Beyond PoC — customizable</span></td>
+          </tr>
+          <tr>
+            <td data-label="Application" class="prod-name">School Management System</td>
+            <td data-label="What it does">Digitizes a school's end-to-end administrative process.</td>
+            <td data-label="Stage"><span class="status status-pilot">In build</span></td>
+          </tr>
+          <tr>
+            <td data-label="Application" class="prod-name">Quick Commerce Platform</td>
+            <td data-label="What it does">Hybrid quick-commerce & e-commerce site, built for Sharanya Collection.</td>
+            <td data-label="Stage"><span class="status status-live">Live client deployment</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ACADEMY -->
+  <section id="academy" class="on-navy">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="kicker mono">TRAINING</span>
+        <h2>Bridge to Better Tech Academy</h2>
+        <p>Our first live program is data engineering — SQL, Python, Git, Hadoop, Spark, and cloud platforms — taught by engineers who use these tools on active client work. More tracks are in the works as the academy grows.</p>
+      </div>
+      <a href="#contact" class="btn btn-primary">Get the syllabus</a>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="kicker mono">WHO WE ARE</span>
+        <h2>Founded on domain depth, not generalist tooling</h2>
+        <p>Bridge to Better Tech Private Limited — currently completing incorporation — is built by three founders with direct, production experience across the systems we advise on.</p>
+      </div>
+      <div class="team">
+        <div class="member">
+          <h3>Ketan</h3>
+          <span class="role mono">CO-FOUNDER — DOMAIN & DELIVERY</span>
+          <p>16+ years in QA, BA, and PM leadership, with deep specialization in IWMS platforms — TRIRIGA, Maximo, Archibus, Corrigo — built through enterprise engagements including JLL and ValuD.</p>
+        </div>
+        <div class="member">
+          <h3>Prasad Kokate</h3>
+          <span class="role mono">CO-FOUNDER — TECHNICAL ARCHITECT</span>
+          <p>Senior Data Engineer with production experience across GCP, AWS, Azure, Databricks, PySpark, and Airflow. CSPO-certified.</p>
+        </div>
+        <div class="member">
+          <h3>Atharva Patil</h3>
+          <span class="role mono">CO-FOUNDER — DATA ENGINEERING</span>
+          <p>Data Engineer with hands-on experience across the same modern cloud and pipeline stack, focused on execution and delivery support.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHITEPAPER -->
+  <section id="whitepaper" class="on-navy">
+    <div class="wrap whitepaper">
+      <div>
+        <span class="kicker mono">FREE WHITEPAPER</span>
+        <h2 style="margin-bottom:18px;">Why most data migrations fail — and the one layer most teams leave out</h2>
+        <blockquote>The problem is rarely the technology used to move the data. It's the absence of a rigorous, independent step to prove it arrived correctly.</blockquote>
+        <p style="color:var(--muted); font-size:0.92rem;">A practical framework for de-risking legacy-to-cloud and system-to-system migration, written for founders and operations leaders who don't have an enterprise consulting budget.</p>
+      </div>
+      <form class="wp-form" onsubmit="event.preventDefault(); alert('Thanks — connect this form to your mailing list to go live.');">
+        <label for="wp-email">Work email</label>
+        <input id="wp-email" type="email" required placeholder="you@company.com">
+        <label for="wp-name">Name</label>
+        <input id="wp-name" type="text" required placeholder="Full name">
+        <button class="btn btn-primary" type="submit" style="width:100%;">Send me the whitepaper</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="on-navy">
+    <div class="wrap contact-grid">
+      <div>
+        <span class="kicker mono">GET IN TOUCH</span>
+        <h2>Talk to the team</h2>
+        <p style="color:var(--muted); max-width:42ch;">Whether it's a migration you're worried about, an MIS report nobody trusts, or a cohort you'd like to enrol in — tell us what you're working with.</p>
+      </div>
+      <div>
+        <div class="contact-item">
+          <span class="k mono">EMAIL</span>
+          <span class="v"><a href="mailto:bridgetobetter@bridgetobettertech.tech">bridgetobetter@bridgetobettertech.tech</a></span>
+        </div>
+        <div class="contact-item">
+          <span class="k mono">PHONE</span>
+          <span class="v">+91 94237 02602</span>
+        </div>
+        <div class="contact-item">
+          <span class="k mono">STATUS</span>
+          <span class="v" style="color:var(--muted); font-size:0.92rem;">Bridge to Better Tech Private Limited — incorporation in progress.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Bridge to Better Tech</span>
+    <span class="mono" style="font-size:0.78rem;">MAP → CLEANSE → MIGRATE → ASSURE</span>
+  </div>
+</footer>
+
+<script>
+  const toggle = document.getElementById('navToggle');
+  const menu = document.getElementById('navMenu');
+  toggle.addEventListener('click', () => {
+    const isOpen = menu.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', isOpen);
+  });
+  document.querySelectorAll('#navMenu a').forEach(a => {
+    a.addEventListener('click', () => { menu.classList.remove('open'); toggle.setAttribute('aria-expanded','false'); });
+  });
+</script>
+
+</body>
+</html>

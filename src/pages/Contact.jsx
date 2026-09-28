@@ -1,15 +1,9 @@
-import { useState } from 'react';
 import usePageTitle from '../hooks/usePageTitle.js';
+import { openBot } from '../bot/openBot.js';
+import { BOT_NAME, CONTACT_EMAIL, CONTACT_PHONE } from '../config.js';
 
 export default function Contact() {
-  usePageTitle('Contact — Bridge to Better Tech');
-
-  const [inquirySent, setInquirySent] = useState(false);
-
-  function handleInquirySubmit(e) {
-    e.preventDefault();
-    setInquirySent(true);
-  }
+  usePageTitle('Contact — Build to Better Tech');
 
   return (
     <>
@@ -17,7 +11,7 @@ export default function Contact() {
         <div className="wrap">
           <span className="kicker mono" style={{ color: 'var(--copper-light)' }}>GET IN TOUCH</span>
           <h1>Talk to the team</h1>
-          <p>Whether it's a migration you're worried about, an MIS report nobody trusts, a custom build, or a cohort you'd like to enrol in — tell us what you're working with.</p>
+          <p>Whether it's a software build, an AI or data project, a testing engagement, or a cohort you'd like to enrol in — tell us what you're working with.</p>
         </div>
       </section>
 
@@ -26,29 +20,23 @@ export default function Contact() {
           <div>
             <div className="contact-item">
               <span className="k mono">EMAIL</span>
-              <span className="v"><a href="mailto:bridgetobetter@bridgetobettertech.tech">bridgetobetter@bridgetobettertech.tech</a></span>
+              <span className="v"><a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a></span>
             </div>
             <div className="contact-item">
               <span className="k mono">PHONE</span>
-              <span className="v">+91 94237 02602</span>
+              <span className="v">{CONTACT_PHONE}</span>
             </div>
             <div className="contact-item">
               <span className="k mono">STATUS</span>
-              <span className="v" style={{ color: 'var(--muted)', fontSize: '0.92rem' }}>Bridge to Better Tech Private Limited — incorporation in progress.</span>
+              <span className="v" style={{ color: 'var(--muted)', fontSize: '0.92rem' }}>Build to Better Tech Private Limited — incorporation in progress.</span>
             </div>
           </div>
-          <div>
-            <h3 style={{ marginBottom: 16, color: 'var(--cream-text)' }}>Service inquiry</h3>
-            <form className="wp-form" onSubmit={handleInquirySubmit}>
-              <label htmlFor="inq-name">Name</label>
-              <input id="inq-name" type="text" required placeholder="Full name" />
-              <label htmlFor="inq-email">Work email</label>
-              <input id="inq-email" type="email" required placeholder="you@company.com" />
-              <label htmlFor="inq-message">What are you working with?</label>
-              <textarea id="inq-message" required placeholder="Tell us about your migration, MIS reporting, custom build, or Academy interest"></textarea>
-              {inquirySent && <p className="form-note">Thanks — someone from the team will get back to you shortly.</p>}
-              <button className="btn btn-primary" type="submit" style={{ width: '100%' }}>Send inquiry</button>
-            </form>
+          <div className="contact-cta">
+            <h3>Have a question or a project in mind?</h3>
+            <p>Our assistant can share how to reach the team and answer questions about our services, products, and Academy.</p>
+            <button type="button" className="btn btn-primary" onClick={() => openBot("I'd like to make an enquiry", 'enquiry')}>
+              Chat with {BOT_NAME}
+            </button>
           </div>
         </div>
       </section>

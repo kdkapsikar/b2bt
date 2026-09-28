@@ -16,7 +16,7 @@ export default function Header() {
     <header>
       <nav className="nav">
         <Link to="/" className="logo" onClick={() => setOpen(false)}>
-          Bridge to <span>Better</span> Tech
+          Build to <span>Better</span> Tech
         </Link>
         <button
           className="nav-toggle"

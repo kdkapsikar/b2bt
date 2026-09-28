@@ -1,16 +1,16 @@
-import { Link } from 'react-router-dom';
 import usePageTitle from '../hooks/usePageTitle.js';
+import { openBot } from '../bot/openBot.js';
 
 export default function Academy() {
-  usePageTitle('Academy — Bridge to Better Tech');
+  usePageTitle('Academy — Build to Better Tech');
 
   return (
     <>
       <section className="page-hero">
         <div className="wrap">
           <span className="kicker mono" style={{ color: 'var(--copper-light)' }}>TRAINING</span>
-          <h1>Bridge to Better Tech Academy</h1>
-          <p>Our first live program is data engineering — SQL, Python, Git, Hadoop, Spark, and cloud platforms — taught by engineers who use these tools on active client work. More tracks are in the works as the academy grows.</p>
+          <h1>Build to Better Tech Academy</h1>
+          <p>Our first live program is data engineering — SQL, Python, Git, Hadoop, Spark, and cloud platforms — taught by experienced professionals. More tracks are on the way as the academy grows.</p>
         </div>
       </section>
 
@@ -19,19 +19,20 @@ export default function Academy() {
           <div className="section-head">
             <span className="kicker mono">CURRENT PROGRAM</span>
             <h2>Data Engineering</h2>
-            <p>SQL, Python, Git, Hadoop, Spark, and cloud platforms — a job-ready curriculum taught by the same engineers running our client delivery work.</p>
+            <p>SQL, Python, Git, Hadoop, Spark, and cloud platforms — a job-ready curriculum taught by experienced professionals.</p>
           </div>
-          <Link to="/contact" className="btn btn-primary">Get the syllabus</Link>
+          <button type="button" className="btn btn-primary" onClick={() => openBot('Get the syllabus', 'syllabus')}>Get the syllabus</button>
         </div>
       </section>
 
       <section className="on-navy" style={{ borderTop: '1px solid var(--line-soft)' }}>
         <div className="wrap">
-          <div className="section-head" style={{ marginBottom: 0 }}>
-            <span className="kicker mono">NEXT TRACK — IN PLANNING</span>
+          <div className="section-head">
+            <span className="kicker mono">NEXT TRACK — COMING SOON</span>
             <h2>Testing & QA Automation</h2>
-            <p>A second track focused on software testing and QA automation. Curriculum is still being drafted — register your interest and we'll share details as the syllabus comes together.</p>
+            <p>A second track focused on software testing and QA automation. Register your interest and we'll share details as the track opens.</p>
           </div>
+          <button type="button" className="btn btn-primary" onClick={() => openBot('Register interest', 'register interest')}>Register interest</button>
         </div>
       </section>
     </>

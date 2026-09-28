@@ -8,6 +8,7 @@ import Products from './pages/Products.jsx';
 import Academy from './pages/Academy.jsx';
 import About from './pages/About.jsx';
 import Contact from './pages/Contact.jsx';
+import Bot from './bot/Bot.jsx';
 
 export default function App() {
   return (
@@ -25,6 +26,7 @@ export default function App() {
         </Routes>
       </main>
       <Footer />
+      <Bot />
     </>
   );
 }

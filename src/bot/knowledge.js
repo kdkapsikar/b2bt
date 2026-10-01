@@ -1,7 +1,5 @@
-import { BOT_NAME, CONTACT_EMAIL, CONTACT_PHONE, TRACK_INTEREST_MAILTO } from '../config.js';
+import { BOT_NAME, CONTACT_EMAIL, CONTACT_PHONE } from '../config.js';
 import { products } from '../data/products.js';
-
-const enquiryMailto = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent('Enquiry from the website')}`;
 
 const MAIN_CHIPS = ['Our services', 'Products', 'Academy', 'Contact us'];
 
@@ -31,7 +29,6 @@ const intents = [
     keywords: ['thanks', 'thank you', 'thankyou', 'great', 'awesome', 'bye', 'goodbye'],
     weight: 1,
     text: 'Happy to help. If you would like to talk to the team, the Contact page is the quickest way.',
-    links: [{ label: 'Contact page', to: '/contact' }],
     chips: MAIN_CHIPS,
   },
   {
@@ -101,14 +98,14 @@ const intents = [
     priority: true,
     keywords: ['syllabus', 'curriculum', 'course content', 'course details', 'fees for the course'],
     text: `To get the Data Engineering syllabus, email ${CONTACT_EMAIL} or call ${CONTACT_PHONE} and mention the Data Engineering program. We'll send it across.`,
-    links: [{ label: 'Email for the syllabus', href: `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent('Data Engineering syllabus request')}` }, { label: 'Academy', to: '/academy' }],
+    links: [{ label: 'Academy', to: '/academy' }],
     chips: ['Testing course', 'Contact us'],
   },
   {
     id: 'testing-track',
     keywords: ['testing course', 'testing track', 'qa course', 'qa training', 'testing training', 'automation course', 'test automation course', 'qa automation', 'register interest', 'register my interest', 'playwright', 'waitlist', 'notify me'],
     text: `The Testing & QA Automation track is coming soon. To register your interest, email ${CONTACT_EMAIL} with your name and phone number (optional), or call ${CONTACT_PHONE}. We'll share details as the track opens.`,
-    links: [{ label: 'Email to register', href: TRACK_INTEREST_MAILTO }, { label: 'Academy', to: '/academy' }],
+    links: [{ label: 'Academy', to: '/academy' }],
     chips: ['Academy', 'Contact us'],
   },
   {
@@ -136,14 +133,12 @@ const intents = [
     id: 'status',
     keywords: ['incorporated', 'incorporation', 'registered', 'registration', 'legal', 'private limited', 'pvt ltd'],
     text: 'Build to Better Tech Private Limited is currently completing incorporation.',
-    links: [{ label: 'Contact page', to: '/contact' }],
     chips: ['Contact us'],
   },
   {
     id: 'contact',
     keywords: ['contact', 'contact us', 'reach', 'email', 'mail', 'phone', 'call', 'number', 'talk to', 'speak to', 'get in touch', 'address'],
     text: `You can email us at ${CONTACT_EMAIL} or call ${CONTACT_PHONE}. You can also send an enquiry from the Contact page.`,
-    links: [{ label: 'Contact page', to: '/contact' }, { label: 'Email us', href: enquiryMailto }],
     chips: ['Our services', 'Products'],
   },
   {
@@ -151,7 +146,6 @@ const intents = [
     priority: true,
     keywords: ['how much', 'charges', 'fees', 'rates', 'enquire', 'enquiry', 'inquiry', 'quote', 'quotation', 'pricing', 'price', 'cost', 'budget', 'proposal', 'hire', 'start a project', 'get started', 'book a conversation'],
     text: `We scope every engagement individually, so there is no fixed price list. To start, email ${CONTACT_EMAIL} or call ${CONTACT_PHONE} and tell us what you are working with. The team will get back to you.`,
-    links: [{ label: 'Email us', href: enquiryMailto }, { label: 'Contact page', to: '/contact' }],
     chips: ['Our services', 'Contact us'],
   },
 ];
@@ -166,8 +160,7 @@ const compiled = intents.map((intent) => ({
 }));
 
 export const FALLBACK = {
-  text: 'I can only help with questions about Build to Better Tech: our services, products, Academy, and how to get in touch. Try one of these, or write to the team directly.',
-  links: [{ label: 'Email us', href: enquiryMailto }],
+  text: `I can only help with questions about Build to Better Tech: our services, products, Academy, and how to get in touch. You can also email ${CONTACT_EMAIL} or call ${CONTACT_PHONE} directly.`,
   chips: MAIN_CHIPS,
 };
 

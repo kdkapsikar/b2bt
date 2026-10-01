@@ -48,12 +48,29 @@ export default function Bot() {
 
   useEffect(() => {
     if (!open) return;
-    if (messages.length === 0) {
-      setMessages([{ from: 'bot', text: WELCOME.text }]);
-      setChips(WELCOME.chips);
-    }
+    setMessages((m) => (m.length ? m : [{ from: 'bot', text: WELCOME.text }]));
+    setChips((c) => (c.length ? c : WELCOME.chips));
+    // Only steal focus when the panel opens — not on every reply, or it
+    // reopens the on-screen keyboard while someone is tapping a chip/link.
     inputRef.current?.focus();
-  }, [open, messages.length]);
+  }, [open]);
+
+  useEffect(() => {
+    if (!open) return undefined;
+    // Lock both <html> and <body> — the scrolling element is the <html>
+    // root in standards mode, so locking body alone leaves the page
+    // scrollable behind the panel.
+    const { body } = document;
+    const html = document.documentElement;
+    const prevBodyOverflow = body.style.overflow;
+    const prevHtmlOverflow = html.style.overflow;
+    body.style.overflow = 'hidden';
+    html.style.overflow = 'hidden';
+    return () => {
+      body.style.overflow = prevBodyOverflow;
+      html.style.overflow = prevHtmlOverflow;
+    };
+  }, [open]);
 
   useEffect(() => {
     const el = logRef.current;

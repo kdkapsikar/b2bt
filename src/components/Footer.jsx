@@ -2,8 +2,7 @@ export default function Footer() {
   return (
     <footer>
       <div className="wrap">
-        <span>© 2026 Build to Better Tech</span>
-        <span className="mono" style={{ fontSize: '0.78rem' }}>DESIGN → BUILD → TEST → OPERATE</span>
+        <span>© 2026 Bring2Better Tech</span>
       </div>
     </footer>
   );

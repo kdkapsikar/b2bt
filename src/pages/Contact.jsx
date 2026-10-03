@@ -3,19 +3,19 @@ import { openBot } from '../bot/openBot.js';
 import { BOT_NAME, CONTACT_EMAIL, CONTACT_PHONE } from '../config.js';
 
 export default function Contact() {
-  usePageTitle('Contact — Build to Better Tech');
+  usePageTitle('Contact — Bring2Better Tech');
 
   return (
     <>
       <section className="page-hero">
         <div className="wrap">
-          <span className="kicker mono" style={{ color: 'var(--copper-light)' }}>GET IN TOUCH</span>
+          <span className="kicker mono" style={{ color: 'var(--accent)' }}>GET IN TOUCH</span>
           <h1>Talk to <span className="accent">the team</span></h1>
           <p>Whether it's a software build, an AI or data project, a testing engagement, or a cohort you'd like to enrol in — tell us what you're working with.</p>
         </div>
       </section>
 
-      <section className="on-navy">
+      <section className="on-alt">
         <div className="wrap contact-grid">
           <div>
             <div className="contact-item">
@@ -25,10 +25,6 @@ export default function Contact() {
             <div className="contact-item">
               <span className="k mono">PHONE</span>
               <span className="v">{CONTACT_PHONE}</span>
-            </div>
-            <div className="contact-item">
-              <span className="k mono">STATUS</span>
-              <span className="v" style={{ color: 'var(--muted)', fontSize: '0.92rem' }}>Build to Better Tech Private Limited — incorporation in progress.</span>
             </div>
           </div>
           <div className="contact-cta">

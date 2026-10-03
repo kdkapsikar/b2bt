@@ -136,7 +136,7 @@ export default function Bot() {
             <BotCharacter size={40} tracking={false} />
             <div className="bot-head-text">
               <strong>{BOT_NAME}</strong>
-              <span className="mono">Ask about Build to Better Tech</span>
+              <span className="mono">Ask about Bring2Better Tech</span>
             </div>
             <button type="button" className="bot-close" onClick={toggle} aria-label="Close chat">×</button>
           </div>

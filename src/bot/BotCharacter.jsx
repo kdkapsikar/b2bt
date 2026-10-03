@@ -39,11 +39,11 @@ export default function BotCharacter({ size, waving = false, tracking = true }) 
       aria-hidden="true"
       focusable="false"
     >
-      <ellipse className="rivet-shadow" cx="40" cy="76" rx="18" ry="3" fill="#000" opacity="0.28" />
+      <ellipse className="rivet-shadow" cx="40" cy="76" rx="18" ry="3" fill="#16233B" opacity="0.22" />
       <g className="rivet-body">
         <g transform="translate(4 0)">
           {/* antenna */}
-          <line x1="36" y1="10" x2="36" y2="18" stroke="#4C6E96" strokeWidth="3" strokeLinecap="round" />
+          <line x1="36" y1="10" x2="36" y2="18" stroke="#16233B" strokeWidth="3" strokeLinecap="round" />
           <circle className="rivet-bulb" cx="36" cy="7" r="4.2" fill="#D89A55" stroke="#16233B" strokeWidth="1.5" />
 
           {/* ears */}
@@ -52,13 +52,13 @@ export default function BotCharacter({ size, waving = false, tracking = true }) 
 
           {/* waving arm */}
           <g className="rivet-arm">
-            <path d="M69 47 C75 45 77 39 75 32" fill="none" stroke="#4C6E96" strokeWidth="5" strokeLinecap="round" />
-            <path d="M69 47 C75 45 77 39 75 32" fill="none" stroke="#F0EFE6" strokeWidth="2.4" strokeLinecap="round" />
+            <path d="M69 47 C75 45 77 39 75 32" fill="none" stroke="#16233B" strokeWidth="5" strokeLinecap="round" />
+            <path d="M69 47 C75 45 77 39 75 32" fill="none" stroke="#FFFFFF" strokeWidth="2.4" strokeLinecap="round" />
             <circle cx="75" cy="29" r="4.2" fill="#D89A55" stroke="#16233B" strokeWidth="1.5" />
           </g>
 
           {/* head */}
-          <rect x="8" y="17" width="56" height="52" rx="17" fill="#F0EFE6" stroke="#16233B" strokeWidth="2" />
+          <rect x="8" y="17" width="56" height="52" rx="17" fill="#FFFFFF" stroke="#16233B" strokeWidth="2" />
           <path d="M16 30 C17 24 21 21 26 20" fill="none" stroke="#FFFFFF" strokeWidth="2.5" strokeLinecap="round" opacity="0.9" />
 
           {/* face plate */}

@@ -2,25 +2,25 @@ import { Link } from 'react-router-dom';
 import usePageTitle from '../hooks/usePageTitle.js';
 
 export default function About() {
-  usePageTitle('About — Build to Better Tech');
+  usePageTitle('About — Bring2Better Tech');
 
   return (
     <>
-      <section className="page-hero">
+      <section className="page-hero page-hero-compact">
         <div className="wrap">
-          <span className="kicker mono" style={{ color: 'var(--copper-light)' }}>WHO WE ARE</span>
+          <span className="kicker mono">WHO WE ARE</span>
           <h1>Founded on domain depth, <span className="accent">not generalist tooling</span></h1>
-          <p>Build to Better Tech Private Limited — currently completing incorporation — is built by two co-founders with direct, production experience across the systems we advise on.</p>
+          <p>Bring2Better Tech brings hands-on, production experience to the software, data, and AI systems we build and advise on, from first requirement to day-to-day operation.</p>
         </div>
       </section>
 
       {/* CAPABILITIES */}
-      <section className="on-navy">
+      <section className="on-alt">
         <div className="wrap">
           <div className="section-head">
             <span className="kicker mono">WHAT WE BUILD</span>
             <h2>Capabilities, not just headcount</h2>
-            <p>Build to Better Tech designs, develops, tests, and operates software products and technology-enabled solutions, and undertakes training, research, and innovation in AI, machine learning, data science, analytics, automation, and cloud computing.</p>
+            <p>Bring2Better Tech designs, develops, tests, and operates software products and technology-enabled solutions, and undertakes training, research, and innovation in AI, machine learning, data science, analytics, automation, and cloud computing.</p>
           </div>
           <div className="pillars pillars-4">
             <div className="pillar">

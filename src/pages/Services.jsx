@@ -4,7 +4,7 @@ import usePageTitle from '../hooks/usePageTitle.js';
 
 function Service({ id, dark, kicker, title, intro, items, links, open, onToggle }) {
   return (
-    <section id={id} className={'svc-acc' + (dark ? ' on-navy' : '') + (open ? ' is-open' : '')}>
+    <section id={id} className={'svc-acc' + (dark ? ' on-alt' : '') + (open ? ' is-open' : '')}>
       <div className="wrap">
         <h2 className="svc-head">
           <button
@@ -46,7 +46,7 @@ function Service({ id, dark, kicker, title, intro, items, links, open, onToggle 
 }
 
 export default function Services() {
-  usePageTitle('Services — Build to Better Tech');
+  usePageTitle('Services — Bring2Better Tech');
 
   const { hash } = useLocation();
   const [openId, setOpenId] = useState(hash.slice(1) || null);
@@ -59,7 +59,7 @@ export default function Services() {
     <>
       <section className="page-hero">
         <div className="wrap">
-          <span className="kicker mono" style={{ color: 'var(--copper-light)' }}>WHAT WE DO</span>
+          <span className="kicker mono" style={{ color: 'var(--accent)' }}>WHAT WE DO</span>
           <h1>Software, AI, data, and cloud <span className="accent">built, tested, and run end to end</span></h1>
           <p>Seven service lines, one team. Domain-informed engineering, not generalist tooling — built from real experience running these systems in production.</p>
         </div>
@@ -180,7 +180,7 @@ export default function Services() {
         id="academy-research"
         kicker="ACADEMY & RESEARCH"
         title="Train the people who run it"
-        intro="Build to Better Tech Academy teaches data engineering live today, with a testing track in planning — alongside our own research and product development."
+        intro="Bring2Better Tech Academy teaches data engineering live today, with a testing track in planning — alongside our own research and product development."
         items={[
           'Live data engineering program: SQL, Python, Git, Hadoop, Spark, and cloud platforms',
           'Testing track in planning',

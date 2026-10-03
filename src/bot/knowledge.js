@@ -34,7 +34,7 @@ const intents = [
   {
     id: 'identity',
     keywords: ['who are you', 'your name', 'what are you', 'are you a bot', 'are you human', 'are you real', 'what can you do'],
-    text: `I'm ${BOT_NAME}, the assistant for this website. I can answer questions about Build to Better Tech: our services, products, Academy, and how to get in touch.`,
+    text: `I'm ${BOT_NAME}, the assistant for this website. I can answer questions about Bring2Better Tech: our services, products, Academy, and how to get in touch.`,
     chips: MAIN_CHIPS,
   },
   {
@@ -125,14 +125,14 @@ const intents = [
   {
     id: 'about',
     keywords: ['about', 'who we are', 'company', 'founders', 'founder', 'team', 'mission', 'story'],
-    text: 'Build to Better Tech Private Limited designs, develops, tests, and operates software products and technology-enabled solutions, and undertakes training, research, and innovation in AI, machine learning, data science, analytics, automation, and cloud computing. It is led by two co-founders.',
+    text: 'Bring2Better Tech Private Limited designs, develops, tests, and operates software products and technology-enabled solutions, and undertakes training, research, and innovation in AI, machine learning, data science, analytics, automation, and cloud computing.',
     links: [{ label: 'About us', to: '/about' }],
     chips: ['Our services', 'Contact us'],
   },
   {
     id: 'status',
     keywords: ['incorporated', 'incorporation', 'registered', 'registration', 'legal', 'private limited', 'pvt ltd'],
-    text: 'Build to Better Tech Private Limited is currently completing incorporation.',
+    text: 'Bring2Better Tech Private Limited is an incorporated company.',
     chips: ['Contact us'],
   },
   {
@@ -160,7 +160,7 @@ const compiled = intents.map((intent) => ({
 }));
 
 export const FALLBACK = {
-  text: `I can only help with questions about Build to Better Tech: our services, products, Academy, and how to get in touch. You can also email ${CONTACT_EMAIL} or call ${CONTACT_PHONE} directly.`,
+  text: `I can only help with questions about Bring2Better Tech: our services, products, Academy, and how to get in touch. You can also email ${CONTACT_EMAIL} or call ${CONTACT_PHONE} directly.`,
   chips: MAIN_CHIPS,
 };
 

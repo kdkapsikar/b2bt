@@ -60,7 +60,7 @@ export default function Services() {
       <section className="page-hero">
         <div className="wrap">
           <span className="kicker mono" style={{ color: 'var(--copper-light)' }}>WHAT WE DO</span>
-          <h1>Software, AI, data, and cloud — built, tested, and run end to end</h1>
+          <h1>Software, AI, data, and cloud <span className="accent">built, tested, and run end to end</span></h1>
           <p>Seven service lines, one team. Domain-informed engineering, not generalist tooling — built from real experience running these systems in production.</p>
         </div>
       </section>

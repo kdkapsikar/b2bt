@@ -10,7 +10,7 @@ export default function Contact() {
       <section className="page-hero">
         <div className="wrap">
           <span className="kicker mono" style={{ color: 'var(--copper-light)' }}>GET IN TOUCH</span>
-          <h1>Talk to the team</h1>
+          <h1>Talk to <span className="accent">the team</span></h1>
           <p>Whether it's a software build, an AI or data project, a testing engagement, or a cohort you'd like to enrol in — tell us what you're working with.</p>
         </div>
       </section>

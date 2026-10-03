@@ -9,7 +9,7 @@ export default function Academy() {
       <section className="page-hero">
         <div className="wrap">
           <span className="kicker mono" style={{ color: 'var(--copper-light)' }}>TRAINING</span>
-          <h1>Build to Better Tech Academy</h1>
+          <h1>Build to Better Tech <span className="accent">Academy</span></h1>
           <p>Our first live program is data engineering — SQL, Python, Git, Hadoop, Spark, and cloud platforms — taught by experienced professionals. More tracks are on the way as the academy grows.</p>
         </div>
       </section>

@@ -9,7 +9,7 @@ export default function About() {
       <section className="page-hero">
         <div className="wrap">
           <span className="kicker mono" style={{ color: 'var(--copper-light)' }}>WHO WE ARE</span>
-          <h1>Founded on domain depth, not generalist tooling</h1>
+          <h1>Founded on domain depth, <span className="accent">not generalist tooling</span></h1>
           <p>Build to Better Tech Private Limited — currently completing incorporation — is built by two co-founders with direct, production experience across the systems we advise on.</p>
         </div>
       </section>

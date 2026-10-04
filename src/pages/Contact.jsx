@@ -1,6 +1,6 @@
 import usePageTitle from '../hooks/usePageTitle.js';
 import { openBot } from '../bot/openBot.js';
-import { BOT_NAME, CONTACT_EMAIL, CONTACT_PHONE } from '../config.js';
+import { ACADEMY_EMAIL, BOT_NAME, CONTACT_EMAIL, CONTACT_PHONES } from '../config.js';
 
 export default function Contact() {
   usePageTitle('Contact — Bring2Better Tech');
@@ -19,12 +19,18 @@ export default function Contact() {
         <div className="wrap contact-grid">
           <div>
             <div className="contact-item">
-              <span className="k mono">EMAIL</span>
+              <span className="k mono">GENERAL ENQUIRIES</span>
               <span className="v"><a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a></span>
             </div>
             <div className="contact-item">
+              <span className="k mono">TRAINING</span>
+              <span className="v"><a href={`mailto:${ACADEMY_EMAIL}`}>{ACADEMY_EMAIL}</a></span>
+            </div>
+            <div className="contact-item">
               <span className="k mono">PHONE</span>
-              <span className="v">{CONTACT_PHONE}</span>
+              {CONTACT_PHONES.map((n) => (
+                <span key={n} className="v" style={{ display: 'block' }}>{n}</span>
+              ))}
             </div>
           </div>
           <div className="contact-cta">

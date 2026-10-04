@@ -1,10 +1,10 @@
-import { BOT_NAME, CONTACT_EMAIL, CONTACT_PHONE } from '../config.js';
+import { ACADEMY_EMAIL, BOT_NAME, CALL_TEXT, CONTACT_EMAIL } from '../config.js';
 import { products } from '../data/products.js';
 
 const MAIN_CHIPS = ['Our services', 'Products', 'Academy', 'Contact us'];
 
 export const WELCOME = {
-  text: `Hi, I'm ${BOT_NAME}. I can tell you about our services, products, and Academy, or help you get in touch. What would you like to know?`,
+  text: `👋  Hi, I'm ${BOT_NAME}. I can tell you about our services, products, and Academy, or help you get in touch. What would you like to know?`,
   chips: MAIN_CHIPS,
 };
 
@@ -26,9 +26,16 @@ const intents = [
   },
   {
     id: 'thanks',
-    keywords: ['thanks', 'thank you', 'thankyou', 'great', 'awesome', 'bye', 'goodbye'],
+    keywords: ['thanks', 'thank you', 'thankyou', 'thx', 'great', 'awesome'],
     weight: 1,
-    text: 'Happy to help. If you would like to talk to the team, the Contact page is the quickest way.',
+    text: "You're welcome! Is there anything else I can help you with?",
+    chips: MAIN_CHIPS,
+  },
+  {
+    id: 'bye',
+    keywords: ['bye', 'goodbye', 'see you'],
+    weight: 1,
+    text: 'Goodbye! Come back any time if you have more questions.',
     chips: MAIN_CHIPS,
   },
   {
@@ -89,7 +96,7 @@ const intents = [
   {
     id: 'academy',
     keywords: ['academy', 'course', 'courses', 'training', 'train', 'learn', 'learning', 'class', 'classes', 'student', 'students', 'cohort', 'enrol', 'enroll', 'sql', 'python', 'spark', 'hadoop', 'git'],
-    text: 'Our Academy runs a live data engineering program covering SQL, Python, Git, Hadoop, Spark, and cloud platforms, taught by experienced professionals. A Testing & QA Automation track is coming soon, and you can register your interest.',
+    text: `Our Academy runs a live data engineering program covering SQL, Python, Git, Hadoop, Spark, and cloud platforms, taught by experienced professionals. A Testing & QA Automation track is coming soon, and you can register your interest. For training enquiries, email ${ACADEMY_EMAIL}.`,
     links: [{ label: 'Academy', to: '/academy' }, { label: 'Ask for the syllabus', to: '/contact' }],
     chips: ['Testing course', 'Contact us'],
   },
@@ -97,14 +104,14 @@ const intents = [
     id: 'syllabus',
     priority: true,
     keywords: ['syllabus', 'curriculum', 'course content', 'course details', 'fees for the course'],
-    text: `To get the Data Engineering syllabus, email ${CONTACT_EMAIL} or call ${CONTACT_PHONE} and mention the Data Engineering program. We'll send it across.`,
+    text: `To get the Data Engineering syllabus, email ${ACADEMY_EMAIL} or call ${CALL_TEXT} and mention the Data Engineering program. We'll send it across.`,
     links: [{ label: 'Academy', to: '/academy' }],
     chips: ['Testing course', 'Contact us'],
   },
   {
     id: 'testing-track',
     keywords: ['testing course', 'testing track', 'qa course', 'qa training', 'testing training', 'automation course', 'test automation course', 'qa automation', 'register interest', 'register my interest', 'playwright', 'waitlist', 'notify me'],
-    text: `The Testing & QA Automation track is coming soon. To register your interest, email ${CONTACT_EMAIL} with your name and phone number (optional), or call ${CONTACT_PHONE}. We'll share details as the track opens.`,
+    text: `The Testing & QA Automation track is coming soon. To register your interest, email ${ACADEMY_EMAIL} with your name and phone number (optional), or call ${CALL_TEXT}. We'll share details as the track opens.`,
     links: [{ label: 'Academy', to: '/academy' }],
     chips: ['Academy', 'Contact us'],
   },
@@ -138,14 +145,14 @@ const intents = [
   {
     id: 'contact',
     keywords: ['contact', 'contact us', 'reach', 'email', 'mail', 'phone', 'call', 'number', 'talk to', 'speak to', 'get in touch', 'address'],
-    text: `You can email us at ${CONTACT_EMAIL} or call ${CONTACT_PHONE}. You can also send an enquiry from the Contact page.`,
+    text: `You can email us at ${CONTACT_EMAIL} or call ${CALL_TEXT}.`,
     chips: ['Our services', 'Products'],
   },
   {
     id: 'enquiry',
     priority: true,
     keywords: ['how much', 'charges', 'fees', 'rates', 'enquire', 'enquiry', 'inquiry', 'quote', 'quotation', 'pricing', 'price', 'cost', 'budget', 'proposal', 'hire', 'start a project', 'get started', 'book a conversation'],
-    text: `We scope every engagement individually, so there is no fixed price list. To start, email ${CONTACT_EMAIL} or call ${CONTACT_PHONE} and tell us what you are working with. The team will get back to you.`,
+    text: `We scope every engagement individually, so there is no fixed price list. To start, email ${CONTACT_EMAIL} or call ${CALL_TEXT} and tell us what you are working with. The team will get back to you.`,
     chips: ['Our services', 'Contact us'],
   },
 ];
@@ -159,8 +166,16 @@ const compiled = intents.map((intent) => ({
   })),
 }));
 
+const EMOJI = {
+  greeting: '👋', thanks: '😊', bye: '👋', identity: '🤖', services: '🛠️', software: '💻', ai: '✨',
+  data: '📊', cloud: '☁️', testing: '✅', consulting: '💡', academy: '🎓', syllabus: '📚',
+  'testing-track': '🧪', products: '🚀', about: '🏢', status: '🏢', contact: '📞', enquiry: '✉️',
+  'product-testsphere': '🧪', 'product-hospital': '🏥', 'product-realestate': '🏠', 'product-school': '🏫',
+  'product-commerce': '🛒', 'product-grievance': '📣', 'product-chatbot': '💬',
+};
+
 export const FALLBACK = {
-  text: `I can only help with questions about Bring2Better Tech: our services, products, Academy, and how to get in touch. You can also email ${CONTACT_EMAIL} or call ${CONTACT_PHONE} directly.`,
+  text: `🙂  I can only help with questions about Bring2Better Tech: our services, products, Academy, and how to get in touch. You can also email ${CONTACT_EMAIL} or call ${CALL_TEXT} directly.`,
   chips: MAIN_CHIPS,
 };
 
@@ -177,7 +192,9 @@ export function respond(input) {
       bestScore = score;
     }
   }
-  return best ? { text: best.text, links: best.links, chips: best.chips } : FALLBACK;
+  if (!best) return FALLBACK;
+  const emoji = EMOJI[best.id];
+  return { text: emoji ? `${emoji}  ${best.text}` : best.text, links: best.links, chips: best.chips };
 }
 
 const chipQueries = {

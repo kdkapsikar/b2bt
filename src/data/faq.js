@@ -1,4 +1,4 @@
-import { CONTACT_EMAIL, CONTACT_PHONE } from '../config.js';
+import { ACADEMY_EMAIL, CALL_TEXT, CONTACT_EMAIL } from '../config.js';
 
 export const faq = [
   {
@@ -19,10 +19,10 @@ export const faq = [
   },
   {
     q: 'Do you offer training?',
-    a: 'Yes. The Academy runs a live data engineering program covering SQL, Python, Git, Hadoop, Spark, and cloud platforms. A Testing & QA Automation track is coming soon.',
+    a: `Yes. The Academy runs a live data engineering program covering SQL, Python, Git, Hadoop, Spark, and cloud platforms. A Testing & QA Automation track is coming soon. For training enquiries, email ${ACADEMY_EMAIL}.`,
   },
   {
     q: 'How do I get in touch?',
-    a: `Email ${CONTACT_EMAIL} or call ${CONTACT_PHONE}, or ask Rivet, our site assistant, using the chat button.`,
+    a: `Email ${CONTACT_EMAIL} or call ${CALL_TEXT}, or ask Rivet, our site assistant, using the chat button.`,
   },
 ];

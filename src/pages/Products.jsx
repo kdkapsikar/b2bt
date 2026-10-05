@@ -8,9 +8,9 @@ export default function Products() {
     <>
       <section className="page-hero">
         <div className="wrap">
-          <span className="kicker mono" style={{ color: 'var(--accent)' }}>FROM THE WORKSHOP</span>
-          <h1>Applications we've built <span className="accent">and are building</span></h1>
-          <p>Real client work — QA tooling, hospital ops, real estate, education, retail, civic services, and AI. Not everything we build is a data pipeline, and that's by design.</p>
+          <span className="kicker mono" style={{ color: 'var(--accent)' }}>PORTFOLIO</span>
+          <h1>Applications we have built <span className="accent">and are building</span></h1>
+          <p>Our portfolio spans QA tooling, healthcare, real estate, education, retail, civic services, and AI.</p>
         </div>
       </section>
 

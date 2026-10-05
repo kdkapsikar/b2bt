@@ -61,7 +61,7 @@ export default function Services() {
         <div className="wrap">
           <span className="kicker mono" style={{ color: 'var(--accent)' }}>WHAT WE DO</span>
           <h1>Software, AI, data, and cloud <span className="accent">built, tested, and run end to end</span></h1>
-          <p>Seven service lines, one team. Domain-informed engineering, not generalist tooling — built from real experience running these systems in production.</p>
+          <p>Seven service lines delivered by one team, combining domain-informed engineering with production experience.</p>
         </div>
       </section>
 
@@ -70,17 +70,17 @@ export default function Services() {
         open={openId === "software"}
         onToggle={() => toggle("software")}
         kicker="SOFTWARE DEVELOPMENT"
-        title="Applications built end to end"
-        intro="We design, develop, test, and operate software products for businesses, institutions, and other organizations — taking ownership of the full build, not an isolated module handed off mid-way."
+        title="End-to-end application development"
+        intro="We design, develop, test, and operate software products for businesses, institutions, and other organisations, taking ownership of the full build rather than an isolated module."
         items={[
           'Web and mobile applications',
           'Enterprise software and internal tools',
           'Cloud-based software and SaaS platforms',
-          'End-to-end delivery, or development-only capacity if you already have your own QA or PM function',
+          'End-to-end delivery, or development-only capacity where you already maintain your own QA or project management function',
         ]}
         links={[
-          { to: '/products', label: 'See applications we\'ve built' },
-          { to: '/contact', label: 'Ask about a build' },
+          { to: '/products', label: 'View applications we have built' },
+          { to: '/contact', label: 'Enquire about a build' },
         ]}
       />
 
@@ -90,17 +90,17 @@ export default function Services() {
         onToggle={() => toggle("ai")}
         dark
         kicker="AI & MACHINE LEARNING"
-        title="AI that fits your workflow"
-        intro="We integrate AI into existing products and customer-facing touchpoints, and build AI-assisted tools of our own. A chatbot for a client's website is in build today."
+        title="Practical AI for business workflows"
+        intro="We integrate AI into existing products and customer-facing touchpoints, and build AI-assisted tools of our own. A chatbot for a client's website is currently in development."
         items={[
           'LLM integration and chatbots for websites and products',
-          'AI-assisted tooling — TestSphere generates test scenarios and test cases from requirements',
+          'AI-assisted tooling, including TestSphere, which generates test scenarios and test cases from requirements',
           'Machine learning and data science solutions',
           'Research and development on emerging technologies',
         ]}
         links={[
-          { to: '/products', label: 'See TestSphere and the chatbot build' },
-          { to: '/contact', label: 'Ask about an AI project' },
+          { to: '/products', label: 'View TestSphere and the chatbot project' },
+          { to: '/contact', label: 'Enquire about an AI project' },
         ]}
       />
 
@@ -109,8 +109,8 @@ export default function Services() {
         open={openId === "data"}
         onToggle={() => toggle("data")}
         kicker="DATA & ANALYTICS"
-        title="Data you can trust"
-        intro="Production data engineering on GCP, AWS, Azure, Databricks, PySpark, and Airflow — with an independent validation step on migrations, which most teams skip."
+        title="Reliable, validated data"
+        intro="Production data engineering on GCP, AWS, Azure, Databricks, PySpark, and Airflow, with an independent validation step on migrations that is frequently omitted."
         items={[
           'Data engineering and pipelines',
           'Data modernisation and legacy-to-cloud migration',
@@ -119,7 +119,7 @@ export default function Services() {
         ]}
         links={[
           { to: '/contact', label: 'Request a scoping call' },
-          { to: '/academy', label: 'Learn data engineering with us' },
+          { to: '/academy', label: 'Explore our data engineering programme' },
         ]}
       />
 
@@ -129,15 +129,15 @@ export default function Services() {
         onToggle={() => toggle("cloud")}
         dark
         kicker="CLOUD & AUTOMATION"
-        title="Take the manual work out"
-        intro="Cloud-based solutions and automation for the reporting, reconciliation, and operational work that eats your team's week."
+        title="Automation of manual operations"
+        intro="Cloud-based solutions and automation for recurring reporting, reconciliation, and operational work."
         items={[
           'Cloud computing solutions on GCP, AWS, and Azure',
           'Automation of manual reporting and reconciliation',
           'Workflow and process automation',
           'Operating and maintaining what we build',
         ]}
-        links={[{ to: '/contact', label: 'Ask about automation' }]}
+        links={[{ to: '/contact', label: 'Enquire about automation' }]}
       />
 
       <Service
@@ -146,7 +146,7 @@ export default function Services() {
         onToggle={() => toggle("testing")}
         kicker="QA & TESTING"
         title="Independent testing"
-        intro="Test strategy, execution, and defect tracking as a standalone engagement or as part of a build — grounded in 16+ years of QA leadership."
+        intro="Test strategy, execution, and defect tracking as a standalone engagement or as part of a build — supported by more than 16 years of QA leadership."
         items={[
           'Test strategy, planning, and execution',
           'Defect and execution-cycle tracking',
@@ -165,28 +165,28 @@ export default function Services() {
         onToggle={() => toggle("consulting")}
         dark
         kicker="CONSULTING"
-        title="Advice before you commit"
-        intro="Independent advisory on software, data, and QA — before you commit to a build, a platform, or a migration."
+        title="Independent advisory"
+        intro="Independent advisory on software, data, and QA, offered ahead of any decision on a build, a platform, or a migration."
         items={[
           'QA, business analysis, and project leadership advisory',
           'IWMS platform consulting',
           'Data and cloud platform advisory across GCP, AWS, Azure, and Databricks',
           'Migration planning and readiness reviews',
         ]}
-        links={[{ to: '/contact', label: 'Book a consulting conversation' }]}
+        links={[{ to: '/contact', label: 'Request a consultation' }]}
       />
 
       <Service
         id="academy-research"
         kicker="ACADEMY & RESEARCH"
-        title="Train the people who run it"
-        intro="Bring2Better Tech Academy teaches data engineering live today, with a testing track in planning — alongside our own research and product development."
+        title="Professional training and research"
+        intro="Bring2Better Tech Academy currently runs a live data engineering programme, with a testing track in planning, alongside our own research and product development."
         items={[
-          'Live data engineering program: SQL, Python, Git, Hadoop, Spark, and cloud platforms',
+          'Live data engineering programme: SQL, Python, Git, Hadoop, Spark, and cloud platforms',
           'Testing track in planning',
           'Product research and development in AI, machine learning, and data',
         ]}
-        links={[{ to: '/academy', label: 'See the academy' }]}
+        links={[{ to: '/academy', label: 'View the Academy' }]}
         open={openId === 'academy-research'}
         onToggle={() => toggle('academy-research')}
       />

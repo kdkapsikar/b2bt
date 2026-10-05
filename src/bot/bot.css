@@ -5,8 +5,13 @@
 .rivet-body{animation:rivet-bob 3.6s ease-in-out infinite;}
 .rivet-eyes{animation:rivet-blink 5s infinite; transform-box:fill-box; transform-origin:center;}
 .rivet-bulb{animation:rivet-pulse 2.4s ease-in-out infinite; transform-box:fill-box; transform-origin:center;}
-.rivet-arm{opacity:0; transform-box:fill-box; transform-origin:0% 100%;}
-.rivet-waving .rivet-arm{opacity:1; animation:rivet-wave 0.7s ease-in-out infinite;}
+.rivet-arm{opacity:0; transition:opacity .25s ease;}
+.rivet-arm.arm-rest{opacity:1;}
+.rivet-waving .arm-rest-r{opacity:0;}
+.rivet-waving .arm-wave{opacity:1; transform-box:fill-box; transform-origin:0% 100%; animation:rivet-wave 0.7s ease-in-out infinite;}
+.rivet-hold .arm-rest-r{opacity:0;}
+.rivet-hold .arm-hold{opacity:1;}
+.rivet-hold .rivet-body, .rivet-hold .rivet-shadow{animation:none;}
 .rivet-shadow{animation:rivet-shadow 3.6s ease-in-out infinite; transform-box:fill-box; transform-origin:center;}
 
 @keyframes rivet-bob{0%,100%{transform:translateY(0);}50%{transform:translateY(-2.5px);}}
@@ -17,12 +22,12 @@
 
 /* ---------- LAUNCHER + TEASER ---------- */
 .bot-launcher{
-  position:fixed; right:clamp(12px, 2vw, 28px); bottom:clamp(10px, 1.6vw, 22px); z-index:70;
+  position:fixed; right:clamp(12px, 2vw, 28px); bottom:calc(var(--footer-h, 64px) + clamp(8px, 1.2vw, 16px)); z-index:70;
   width:var(--bot-size); height:var(--bot-size); padding:0; background:none; border:0; cursor:pointer;
 }
 .bot-launcher:hover .rivet-body{animation-duration:1.4s;}
 .bot-teaser{
-  position:fixed; right:calc(var(--bot-size) + clamp(20px, 2.6vw, 40px)); bottom:calc(var(--bot-size) * 0.45); z-index:70; max-width:clamp(200px, 18vw, 280px);
+  position:fixed; right:calc(var(--bot-size) + clamp(20px, 2.6vw, 40px)); bottom:calc(var(--footer-h, 64px) + var(--bot-size) * 0.45); z-index:70; max-width:clamp(200px, 18vw, 280px);
   background:var(--surface-2); color:var(--ink);
   border:1px solid var(--accent); border-radius:2px;
   padding:0; display:flex; align-items:flex-start;
@@ -47,8 +52,8 @@
 
 /* ---------- PANEL ---------- */
 .bot-panel{
-  position:fixed; right:clamp(12px, 2vw, 28px); bottom:calc(var(--bot-size) + clamp(16px, 2vw, 30px)); z-index:70;
-  width:min(clamp(340px, 28vw, 460px), calc(100vw - 24px)); height:min(clamp(500px, 68vh, 680px), calc(100vh - var(--bot-size) - 60px));
+  position:fixed; right:clamp(12px, 2vw, 28px); bottom:calc(var(--footer-h, 64px) + clamp(8px, 1.2vw, 16px) + var(--bot-size) * 0.965); z-index:70;
+  width:min(clamp(340px, 28vw, 460px), calc(100vw - 24px)); height:min(clamp(500px, 68vh, 680px), calc(100vh - var(--footer-h, 64px) - var(--bot-size) - 60px));
   display:flex; flex-direction:column; overscroll-behavior:contain;
   background:var(--surface); color:var(--ink);
   border:1px solid var(--line); border-radius:2px;

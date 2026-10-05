@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 
-export default function BotCharacter({ size, waving = false, tracking = true }) {
+export default function BotCharacter({ size, waving = false, holding = false, tracking = true }) {
   const svgRef = useRef(null);
   const pupilsRef = useRef(null);
 
@@ -33,7 +33,7 @@ export default function BotCharacter({ size, waving = false, tracking = true }) 
   return (
     <svg
       ref={svgRef}
-      className={'rivet' + (waving ? ' rivet-waving' : '') + (size ? '' : ' rivet-fluid')}
+      className={'rivet' + (waving ? ' rivet-waving' : '') + (holding ? ' rivet-hold' : '') + (size ? '' : ' rivet-fluid')}
       {...dims}
       viewBox="0 0 80 80"
       aria-hidden="true"
@@ -50,12 +50,19 @@ export default function BotCharacter({ size, waving = false, tracking = true }) 
           <rect x="2" y="35" width="7" height="15" rx="3.5" fill="#D89A55" stroke="#16233B" strokeWidth="1.5" />
           <rect x="63" y="35" width="7" height="15" rx="3.5" fill="#D89A55" stroke="#16233B" strokeWidth="1.5" />
 
-          {/* waving arm */}
-          <g className="rivet-arm">
-            <path d="M69 47 C75 45 77 39 75 32" fill="none" stroke="#16233B" strokeWidth="5" strokeLinecap="round" />
-            <path d="M69 47 C75 45 77 39 75 32" fill="none" stroke="#FFFFFF" strokeWidth="2.4" strokeLinecap="round" />
-            <circle cx="75" cy="29" r="4.2" fill="#D89A55" stroke="#16233B" strokeWidth="1.5" />
-          </g>
+          {/* arms: resting at the sides, waving, or raised to hold the chat panel */}
+          {[
+            ['arm-rest arm-rest-l', 'M5 46 C-1 50 -3 56 -1 62', -1, 63.5],
+            ['arm-rest arm-rest-r', 'M67 46 C73 50 75 56 73 62', 73, 63.5],
+            ['arm-wave', 'M69 47 C75 45 77 39 75 32', 75, 29],
+            ['arm-hold', 'M67 44 C73 32 75 16 73 4', 73, 3],
+          ].map(([cls, d, hx, hy]) => (
+            <g key={cls} className={'rivet-arm ' + cls}>
+              <path d={d} fill="none" stroke="#16233B" strokeWidth="5" strokeLinecap="round" />
+              <path d={d} fill="none" stroke="#FFFFFF" strokeWidth="2.4" strokeLinecap="round" />
+              <circle cx={hx} cy={hy} r="3.6" fill="#D89A55" stroke="#16233B" strokeWidth="1.5" />
+            </g>
+          ))}
 
           {/* head */}
           <rect x="8" y="17" width="56" height="52" rx="17" fill="#FFFFFF" stroke="#16233B" strokeWidth="2" />

@@ -5,20 +5,20 @@ import { products } from '../data/products.js';
 import { faq } from '../data/faq.js';
 
 const pillars = [
-  { id: 'software', tag: 'SOFTWARE DEVELOPMENT', title: 'Build applications end to end', body: 'Web and mobile applications, enterprise software, and cloud-based SaaS products — from requirements to a live system.', to: '/services#software', link: 'See software development' },
-  { id: 'ai', tag: 'AI & MACHINE LEARNING', title: 'AI that fits your workflow', body: 'LLM integrations, chatbots, and AI-assisted tooling, plus machine learning and data science work.', to: '/services#ai', link: 'See AI & ML' },
-  { id: 'data', tag: 'DATA & ANALYTICS', title: 'Data you can trust', body: 'Data engineering, modernisation, MIS automation, and migration assurance with independent, QA-grade validation.', to: '/services#data', link: 'See data & analytics' },
-  { id: 'cloud', tag: 'CLOUD & AUTOMATION', title: 'Take the manual work out', body: "Cloud-based solutions and automation for the reporting, reconciliation, and operational work eating your team's week.", to: '/services#cloud', link: 'See cloud & automation' },
-  { id: 'testing', tag: 'QA & TESTING', title: 'Independent testing', body: 'Test strategy, execution, and defect tracking — on your build or ours, backed by 16+ years of QA leadership.', to: '/services#testing', link: 'See QA & testing' },
-  { id: 'consulting', tag: 'CONSULTING', title: 'Advice before you commit', body: 'Independent advisory on software, data, and QA, including IWMS platforms.', to: '/services#consulting', link: 'See consulting' },
-  { id: 'academy', tag: 'ACADEMY & RESEARCH', title: 'Train the people who run it', body: 'Live training in data engineering today, with testing in planning — alongside our own product research and development.', to: '/academy', link: 'See the academy' },
+  { id: 'software', tag: 'SOFTWARE DEVELOPMENT', title: 'End-to-end application development', body: 'Web and mobile applications, enterprise software, and cloud-based SaaS products, delivered from requirements through to a live system.', to: '/services#software', link: 'View software development' },
+  { id: 'ai', tag: 'AI & MACHINE LEARNING', title: 'Practical AI for business workflows', body: 'LLM integrations, chatbots, and AI-assisted tooling, together with machine learning and data science solutions.', to: '/services#ai', link: 'View AI & machine learning' },
+  { id: 'data', tag: 'DATA & ANALYTICS', title: 'Reliable, validated data', body: 'Data engineering, modernisation, MIS automation, and migration assurance supported by independent, QA-grade validation.', to: '/services#data', link: 'View data & analytics' },
+  { id: 'cloud', tag: 'CLOUD & AUTOMATION', title: 'Automation of manual operations', body: 'Cloud-based solutions and automation for recurring reporting, reconciliation, and operational processes.', to: '/services#cloud', link: 'View cloud & automation' },
+  { id: 'testing', tag: 'QA & TESTING', title: 'Independent testing', body: 'Test strategy, execution, and defect tracking, delivered on your build or ours and supported by more than 16 years of QA leadership.', to: '/services#testing', link: 'View QA & testing' },
+  { id: 'consulting', tag: 'CONSULTING', title: 'Independent advisory', body: 'Independent advisory on software, data, and QA, including IWMS platforms.', to: '/services#consulting', link: 'View consulting' },
+  { id: 'academy', tag: 'ACADEMY & RESEARCH', title: 'Professional training and research', body: 'A live data engineering programme today, with a testing track in planning, alongside our own product research and development.', to: '/academy', link: 'View the Academy' },
 ];
 
 const heroCards = [
   { tag: 'SOFTWARE', title: 'Web, mobile & SaaS', sub: 'Build end to end', to: '/services#software' },
-  { tag: 'AI & ML', title: 'Chatbots & LLM tooling', sub: 'Added to your workflow', to: '/services#ai' },
+  { tag: 'AI & ML', title: 'Chatbots & LLM tooling', sub: 'Integrated into existing workflows', to: '/services#ai' },
   { tag: 'DATA', title: 'Pipelines & modernisation', sub: 'With independent validation', to: '/services#data' },
-  { tag: 'QA & TESTING', title: 'Test cases & defect tracking', sub: 'On its own or in a build', to: '/services#testing' },
+  { tag: 'QA & TESTING', title: 'Test cases & defect tracking', sub: 'Standalone or within a build', to: '/services#testing' },
 ];
 
 export default function Home() {
@@ -51,10 +51,10 @@ export default function Home() {
           <div>
             <div className="hero-eyebrow-line"><span className="rule"></span><span>SOFTWARE, DATA & AI</span></div>
             <h1 className="hero-title"><span className="line1">Software, data, and AI</span> <span className="accent">build and run end to end.</span></h1>
-            <p className="sub">Bring2Better Tech designs, builds, tests, and operates software products, data platforms, and AI solutions for businesses, institutions, and organizations — and trains the people who run them.</p>
+            <p className="sub">Bring2Better Tech designs, builds, tests, and operates software products, data platforms, and AI solutions for businesses, institutions, and organisations — and trains the people who run them.</p>
             <div className="cta-row">
-              <Link to="/contact" className="btn btn-primary">Talk to us about a project</Link>
-              <Link to="/services" className="btn btn-ghost">See our services</Link>
+              <Link to="/contact" className="btn btn-primary">Discuss a project</Link>
+              <Link to="/services" className="btn btn-ghost">View our services</Link>
             </div>
           </div>
           <div className="float-cards">
@@ -74,8 +74,8 @@ export default function Home() {
         <div className="wrap">
           <div className="section-head" data-reveal>
             <span className="kicker mono">WHAT WE DO</span>
-            <h2>Seven ways <span className="accent">we work with you</span></h2>
-            <p>Domain-informed engineering, not generalist tooling — built from real experience running these systems in production.</p>
+            <h2>Seven service <span className="accent">lines</span></h2>
+            <p>Domain-informed engineering, grounded in production experience with the systems we deliver.</p>
           </div>
           <div className="pillars pillars-4" data-reveal>
             {pillars.map((p) => {
@@ -105,8 +105,8 @@ export default function Home() {
               );
             })}
             <div className="pillar pillar-cta">
-              <h3>Not sure which fits?</h3>
-              <Link to="/contact">Tell us what you're working with</Link>
+              <h3>Need guidance on the right service?</h3>
+              <Link to="/contact">Contact us to discuss your requirements</Link>
             </div>
           </div>
         </div>
@@ -117,8 +117,8 @@ export default function Home() {
         <div className="wrap">
           <div className="section-head" data-reveal>
             <span className="kicker mono">INDUSTRIES</span>
-            <h2>Applications for <span className="accent">real sectors</span></h2>
-            <p>Each sector below has an application we've built or are building.</p>
+            <h2>Applications across <span className="accent">industries</span></h2>
+            <p>Each sector below is served by an application we have built or are building.</p>
           </div>
           <ul className="industry-list">
             {products.map((p, i) => (
@@ -139,8 +139,8 @@ export default function Home() {
         <div className="wrap svc-grid">
           <div data-reveal>
             <span className="kicker mono">FAQ</span>
-            <h2>Common <span className="accent">questions</span></h2>
-            <p className="svc-intro">Short answers about how we work. For anything else, ask Rivet or get in touch.</p>
+            <h2>Frequently asked <span className="accent">questions</span></h2>
+            <p className="svc-intro">Answers to common questions about how we work. For further information, please use our site assistant or contact us.</p>
           </div>
           <div className="faq-list" data-reveal>
             {faq.map((f, i) => {
@@ -173,12 +173,12 @@ export default function Home() {
       <section>
         <div className="wrap whitepaper" data-reveal>
           <div>
-            <span className="kicker mono">LET'S TALK</span>
-            <h2 style={{ marginBottom: 18 }}>Tell us <span className="accent">what you're working with</span></h2>
-            <p style={{ color: 'var(--muted)', fontSize: '0.92rem' }}>A software build, an AI or data project, a testing engagement, or a cohort you'd like to enrol in — start the conversation.</p>
+            <span className="kicker mono">GET IN TOUCH</span>
+            <h2 style={{ marginBottom: 18 }}>Discuss your <span className="accent">requirements</span></h2>
+            <p style={{ color: 'var(--muted)', fontSize: '0.92rem' }}>For a software build, an AI or data project, a testing engagement, or enrolment in an upcoming Academy cohort, please contact us.</p>
           </div>
           <div>
-            <Link to="/contact" className="btn btn-primary">Get in touch</Link>
+            <Link to="/contact" className="btn btn-primary">Contact us</Link>
           </div>
         </div>
       </section>

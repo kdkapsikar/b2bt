@@ -167,7 +167,7 @@ export default function Bot() {
               ref={inputRef}
               value={input}
               onChange={(e) => setInput(e.target.value)}
-              placeholder="Ask about our services…"
+              placeholder="Type your question…"
               aria-label="Your message"
               maxLength={200}
             />
@@ -180,7 +180,7 @@ export default function Bot() {
         <div className="bot-teaser">
           <button type="button" className="bot-teaser-x" onClick={dismissTeaser} aria-label="Dismiss">×</button>
           <button type="button" className="bot-teaser-text" onClick={toggle}>
-            Hi, I'm {BOT_NAME}. Ask me about our services.
+            Hello, I am {BOT_NAME}. How may I assist you?
           </button>
         </div>
       )}
@@ -193,7 +193,7 @@ export default function Bot() {
         aria-label={open ? `Close chat with ${BOT_NAME}` : `Open chat with ${BOT_NAME}`}
         aria-expanded={open}
       >
-        <BotCharacter waving={teaser && !open} />
+        <BotCharacter waving={teaser && !open} holding={open} />
       </button>
     </>
   );

@@ -1,6 +1,7 @@
-import { useLayoutEffect, useState } from 'react';
+import { useState } from 'react';
+import useIsoLayoutEffect from '../hooks/useIsoLayoutEffect.js';
 import { Link } from 'react-router-dom';
-import usePageTitle from '../hooks/usePageTitle.js';
+import usePageMeta from '../hooks/usePageMeta.js';
 import { products } from '../data/products.js';
 import { faq } from '../data/faq.js';
 
@@ -25,9 +26,9 @@ export default function Home() {
   const [openId, setOpenId] = useState(null);
   const [faqOpen, setFaqOpen] = useState(null);
 
-  useLayoutEffect(() => {
+  useIsoLayoutEffect(() => {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) return undefined;
-    const els = [...document.querySelectorAll('[data-reveal]')];
+    const els = [...document.querySelectorAll('[data-reveal]')].filter((el) => el.getBoundingClientRect().top > window.innerHeight * 0.9);
     els.forEach((el) => el.classList.add('reveal-pre'));
     const io = new IntersectionObserver(
       (entries) => entries.forEach((e) => {
@@ -41,7 +42,7 @@ export default function Home() {
     els.forEach((el) => io.observe(el));
     return () => io.disconnect();
   }, []);
-  usePageTitle('Bring2Better Tech — Software, Data & AI Solutions');
+  usePageMeta('/');
 
   return (
     <>

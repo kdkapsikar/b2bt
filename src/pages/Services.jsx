@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import usePageTitle from '../hooks/usePageTitle.js';
+import usePageMeta from '../hooks/usePageMeta.js';
 
 function Service({ id, dark, kicker, title, intro, items, links, open, onToggle }) {
   return (
@@ -46,10 +46,10 @@ function Service({ id, dark, kicker, title, intro, items, links, open, onToggle 
 }
 
 export default function Services() {
-  usePageTitle('Services — Bring2Better Tech');
+  usePageMeta('/services');
 
   const { hash } = useLocation();
-  const [openId, setOpenId] = useState(hash.slice(1) || null);
+  const [openId, setOpenId] = useState(null);
   useEffect(() => {
     if (hash) setOpenId(hash.slice(1));
   }, [hash]);

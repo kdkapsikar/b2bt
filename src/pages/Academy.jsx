@@ -1,8 +1,8 @@
-import usePageTitle from '../hooks/usePageTitle.js';
+import usePageMeta from '../hooks/usePageMeta.js';
 import { openBot } from '../bot/openBot.js';
 
 export default function Academy() {
-  usePageTitle('Academy — Bring2Better Tech');
+  usePageMeta('/academy');
 
   return (
     <>

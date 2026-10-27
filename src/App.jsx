@@ -8,6 +8,7 @@ import Products from './pages/Products.jsx';
 import Academy from './pages/Academy.jsx';
 import About from './pages/About.jsx';
 import Contact from './pages/Contact.jsx';
+import NotFound from './pages/NotFound.jsx';
 import Bot from './bot/Bot.jsx';
 
 export default function App() {
@@ -23,6 +24,7 @@ export default function App() {
           <Route path="/academy" element={<Academy />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
       <Footer />

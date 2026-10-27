@@ -1,11 +1,12 @@
-import { useLayoutEffect, useRef } from 'react';
+import { useRef } from 'react';
+import useIsoLayoutEffect from '../hooks/useIsoLayoutEffect.js';
 import Icon from './Icons.jsx';
 import { ACADEMY_EMAIL, ADDRESS, CONTACT_EMAIL, CONTACT_PHONES, SOCIALS } from '../config.js';
 
 export default function Footer() {
   const ref = useRef(null);
 
-  useLayoutEffect(() => {
+  useIsoLayoutEffect(() => {
     const el = ref.current;
     if (!el) return undefined;
     const root = document.documentElement;

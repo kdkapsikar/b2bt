@@ -1,10 +1,10 @@
-import usePageTitle from '../hooks/usePageTitle.js';
+import usePageMeta from '../hooks/usePageMeta.js';
 import { openBot } from '../bot/openBot.js';
 import Icon from '../components/Icons.jsx';
 import { ACADEMY_EMAIL, ADDRESS, BOT_NAME, CONTACT_EMAIL, CONTACT_PHONES, SOCIALS } from '../config.js';
 
 export default function Contact() {
-  usePageTitle('Contact — Bring2Better Tech');
+  usePageMeta('/contact');
 
   return (
     <>

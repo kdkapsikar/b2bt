@@ -1,8 +1,8 @@
-import usePageTitle from '../hooks/usePageTitle.js';
+import usePageMeta from '../hooks/usePageMeta.js';
 import { products } from '../data/products.js';
 
 export default function Products() {
-  usePageTitle('Products — Bring2Better Tech');
+  usePageMeta('/products');
 
   return (
     <>

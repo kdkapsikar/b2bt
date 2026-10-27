@@ -1,13 +1,17 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
+import { createRoot, hydrateRoot } from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 import App from './App.jsx';
 import './index.css';
 
-ReactDOM.createRoot(document.getElementById('root')).render(
+const container = document.getElementById('root');
+const app = (
   <React.StrictMode>
-    <BrowserRouter basename={import.meta.env.BASE_URL.replace(/\/$/, '')}>
+    <BrowserRouter>
       <App />
     </BrowserRouter>
   </React.StrictMode>
 );
+
+if (container.hasChildNodes()) hydrateRoot(container, app);
+else createRoot(container).render(app);

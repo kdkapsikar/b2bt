@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom';
-import usePageTitle from '../hooks/usePageTitle.js';
+import usePageMeta from '../hooks/usePageMeta.js';
 
 export default function About() {
-  usePageTitle('About — Bring2Better Tech');
+  usePageMeta('/about');
 
   return (
     <>

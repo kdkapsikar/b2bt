@@ -321,6 +321,7 @@ button:hover > .acc-icon, button:hover .acc-icon{border-color:var(--accent);}
 }
 .products-table tr:last-child td{border-bottom:none;}
 .prod-name{font-weight:600; width:24%;}
+.prod-visit{display:block; margin-top:6px; font-weight:400;}
 .prod-sector{color:#5B6B83; font-size:0.86rem; width:20%;}
 @media (max-width:700px){
   .products-table thead{display:none;}

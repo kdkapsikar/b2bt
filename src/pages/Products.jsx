@@ -23,7 +23,14 @@ export default function Products() {
             <tbody>
               {products.map((p) => (
                 <tr key={p.key}>
-                  <td data-label="Application" className="prod-name">{p.name}</td>
+                  <td data-label="Application" className="prod-name">
+                    {p.name}
+                    {p.url && (
+                      <a className="text-link prod-visit" href={p.url} target="_blank" rel="noopener">
+                        Visit {p.name} <span aria-hidden="true">↗</span>
+                      </a>
+                    )}
+                  </td>
                   <td data-label="Built for" className="prod-sector">{p.sector}</td>
                   <td data-label="What it does">{p.what}</td>
                 </tr>

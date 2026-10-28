@@ -1,5 +1,5 @@
 export const products = [
-  { key: 'testsphere', short: 'Test cases from requirements, with defect tracking.', name: 'TestSphere', sector: 'Software testing & QA', what: 'Converts requirements into test scenarios and test cases using LLM APIs, and tracks defects and execution cycles in one place.' },
+  { key: 'testsphere', url: 'https://testsphere.bring2bettertech.com/', short: 'Test cases from requirements, with defect tracking.', name: 'TestSphere', sector: 'Software testing & QA', what: 'Converts requirements into test scenarios and test cases using LLM APIs, and tracks defects and execution cycles in one place.' },
   { key: 'hospital', short: 'End-to-end hospital operations.', name: 'Hospital Management System', sector: 'Healthcare', what: 'An end-to-end system for running hospital operations, built for a hospital client.' },
   { key: 'realestate', short: 'Property listings and lease tracking.', name: 'Real Estate Pro', sector: 'Real estate', what: "Manages property listings and lease tracking end to end, and can be customised to each client's processes." },
   { key: 'school', short: 'End-to-end school administration.', name: 'School Management System', sector: 'Education', what: "Digitises a school's end-to-end administrative process in a single system." },
